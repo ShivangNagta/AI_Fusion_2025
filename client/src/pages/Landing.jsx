@@ -11,33 +11,64 @@ import ScrollText from "../components/ScrollText";
 import Opportunities from "../components/Opportunities";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useNavigate } from "react-router-dom";
+import { auth, googleProvider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
+
 function Landing() {
   const navigate = useNavigate();
-  const [isClient, setIsClient] = useState(null);
+  // const [isClient, setIsClient] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [searchIcon, setSearchIcon] = useState("/searchWhite.svg");
   const [userIcon, setUserIcon] = useState("/userWhite.svg");
   const [notiIcon, setNotiIcon] = useState("/notificationWhite.svg");
   const [userImage, setUserImage] = useState(null);
 
-  const handleSelection = (type) => {
-    if (type === "client") navigate("/login?type=client");
-    else if (type === "freelancer") navigate("/login?type=freelancer");
-  };
+  // const handleSelection = (type) => {
+  //   if (type === "client") navigate("/login?type=client");
+  //   else if (type === "freelancer") navigate("/login?type=freelancer");
+  // };
+  const handleGoogleSignIn = async () => {
+      try {
+        const result = await signInWithPopup(auth, googleProvider);
+        console.log(result);
+        
+        const token = await result.user.getIdToken();
+  
+        // Store token in local storage
+        localStorage.setItem("authToken", token);
+  
+        const response = await fetch("http://localhost:3001/api/protected", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
+  
+        const userData = await response.json();
+        console.log("User Data:", userData);
+      } catch (error) {
+        console.error("Error during sign-in:", error);
+      }
+      window.location.reload();
+    };
+
+  
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userType");
+    localStorage.removeItem("authToken");
+    // localStorage.removeItem("userType");
     window.location.reload();
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const type = localStorage.getItem("userType");
-    if (type === "client") setIsClient(true);
-    else setIsClient(false);
+    const token = localStorage.getItem("authToken");
+    // const type = localStorage.getItem("userType");
+    // if (type === "client") setIsClient(true);
+    // else setIsClient(false);
     if (token) {
       setIsLoggedIn(true);
+      console.log("User is logged in");
     } else {
       localStorage.removeItem("userImage");
       setIsLoggedIn(false);
@@ -76,10 +107,11 @@ function Landing() {
             className="w-8 h-8 transition-colors duration-300"
           />
         </div>
-        {isLoggedIn || isClient === null ? (
+        {isLoggedIn ? (
           <div>
-            {!isClient ? (
-              <div className="flex items-center justify-end gap-4">
+            {/* {!isClient ? ( */}
+
+            {/* <div className="flex items-center justify-end gap-4">
                 <div
                   className="relative w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-700 hover:bg-[#A594FD] overflow-hidden"
                   onMouseEnter={() =>
@@ -114,8 +146,9 @@ function Landing() {
                     className={`w-8 h-8 rounded-full object-cover`}
                   />
                 </div>
-              </div>
-            ) : (
+              </div> */}
+              
+            {/* {/* ) : ( */}
               <Link to={`/`}>
                 <Button
                   variant="outline"
@@ -126,17 +159,13 @@ function Landing() {
                   <LogOut className="h-[1.2rem] w-[1.2rem]" />
                 </Button>
               </Link>
-            )}
+            {/* )} */}
           </div>
         ) : (
           <div className="flex items-center justify-end gap-4">
             <ButtonTemplate
-              text="User"
-              onClick={() => handleSelection("freelancer")}
-            />
-            <ButtonTemplate
-              text="Client"
-              onClick={() => handleSelection("client")}
+              text="Sign In"
+              onClick={() => handleGoogleSignIn()}
             />
           </div>
         )}

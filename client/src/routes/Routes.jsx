@@ -13,6 +13,7 @@ import AdminPage from "../components/Admin/AdminDashboard";
 import CandidateEditPage from "../pages/CandidatesEditPage";
 import CandidateID from "../pages/CandidatesIdPage";
 import FreelancerRequests from "../pages/FreelancerRequests";
+import LocationForm from "../pages/CandidatesIdPage";
 
 
 
@@ -24,7 +25,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/client/dashboard" element={<Landing />} />
       <Route path="/freelancer/dashboard" element={<Landing />} />
-      <Route path="/search" element={<SearchPage />} />
+      <Route path="/search" element={<LocationForm />} />
       <Route path="/profile" element={<CandidateProfile />} /> 
       <Route path="/profile/edit" element={<CandidateEditPage />} /> 
       <Route path="/admin" element={<AdminPage />} />
