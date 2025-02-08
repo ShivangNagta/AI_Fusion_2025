@@ -14,6 +14,7 @@ import CandidateEditPage from "../pages/CandidatesEditPage";
 import CandidateID from "../pages/CandidatesIdPage";
 import FreelancerRequests from "../pages/FreelancerRequests";
 import LocationForm from "../pages/CandidatesIdPage";
+import LocationDetector from "../pages/CandidatesEditPage";
 
 
 
@@ -25,7 +26,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/client/dashboard" element={<Landing />} />
       <Route path="/freelancer/dashboard" element={<Landing />} />
-      <Route path="/search" element={<LocationForm />} />
+      <Route path="/search" element={<LocationDetector />} />
       <Route path="/profile" element={<CandidateProfile />} /> 
       <Route path="/profile/edit" element={<CandidateEditPage />} /> 
       <Route path="/admin" element={<AdminPage />} />
