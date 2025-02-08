@@ -7,7 +7,7 @@ export default {
   darkMode: 'class',
 
 
-  
+
   theme: {
     extend: {
       colors: {
@@ -33,5 +33,11 @@ export default {
       },
     },
     plugins: [],
+    variants: {
+      extend: {
+        scale: ["group-hover", "hover"],
+        opacity: ["group-hover", "hover"],
+      },
+    },
   }
 }

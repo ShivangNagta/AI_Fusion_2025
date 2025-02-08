@@ -62,7 +62,7 @@ function Element() {
         }}
       >
         <img
-          src="/guitar.jpg"
+          src="/panel.jpg"
           alt="Guitar"
           className="h-full w-full object-cover z-0"
         />
@@ -87,13 +87,13 @@ function Element() {
                 className="text-5xl font-bold text-zinc-100"
                 style={{ textShadow: "6px 6px 10px rgba(0, 0, 0, 0.9)" }}
               >
-                19.4
+                175
               </h2>
               <p
                 className="text-base text-zinc-400"
                 style={{ textShadow: "6px 6px 10px rgba(0, 0, 0, 0.9)" }}
               >
-                DAILY ACTIVE
+                DAILY AVERAGE
               </p>
             </div>
             <div>
@@ -137,11 +137,11 @@ function Element() {
             >
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span className="font-medium text-2xl">JANUARY 2023</span>
+            <span className="font-medium text-2xl">JANUARY 2025</span>
           </div>
           <div className="space-y-2">
             <h1 className="text-5xl font-bold text-zinc-100">5.24k</h1>
-            <p className="text-zinc-400 text-xl">Views on your Profile.</p>
+            <p className="text-zinc-400 text-xl">Our Activity this Month.</p>
           </div>
           <div className="flex gap-2">
             {[0.6, 0.8, 0.4, 1, 0.5, 0.3, 0.7, 0.4, 0.8].map((height, i) => (

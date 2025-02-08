@@ -81,20 +81,20 @@ function Landing() {
 
   return (
     <div className="relative w-full min-h-screen bg-black flex flex-col font-labil">
+      <div className="z-[999] hidden md:block">
       <CursorFollower />
+      </div>
       <img
         src={Background}
         alt="Background"
         className="absolute inset-0 w-full h-auto object-cover z-0"
       />
       <div className="fixed top-8 left-12 z-20">
-        <img
-          src="/logoWhite.svg"
-          alt="Logo"
-          className="w-12 h-auto"
-        />
+        <div className="fixed top-8 left-12 z-20 hidden md:block">
+          <img src="/logoWhite.svg" alt="Logo" className="w-12 h-auto" />
+        </div>
       </div>
-      <div className="flex items-center justify-end gap-0 z-20 fixed top-8 right-8">
+      <div className="flex items-center justify-end gap-0 z-50 absolute lg:fixed top-8 right-8">
         <div
           className="relative w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-700 hover:bg-[#A594FD] mr-4"
           onMouseEnter={() => setSearchIcon("/searchBlack.svg")}
@@ -132,12 +132,8 @@ function Landing() {
                 </div>
                 <div
                   className="relative w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-700 hover:bg-[#A594FD] overflow-hidden"
-                  onMouseEnter={() =>
-                    setNotiIcon("/notificationBlack.svg")
-                  }
-                  onMouseLeave={() =>
-                    setNotiIcon("/notificationWhite.svg")
-                  }
+                  onMouseEnter={() => setNotiIcon("/notificationBlack.svg")}
+                  onMouseLeave={() => setNotiIcon("/notificationWhite.svg")}
                   onClick={() => navigate(`/requests`)}
                 >
                   <img

@@ -11,21 +11,21 @@ export default function Featured() {
     ];
   
     return (
-        <div className="max-w-7xl mx-auto">
-            <h2 className="text-white text-center text-4xl md:text-5xl font-bold mb-8 cursor-default">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-white text-center text-3xl sm:text-4xl md:text-5xl font-bold mb-8 cursor-default">
                 Featured and seen in
             </h2>
-            <div className="flex flex-wrap justify-center items-center gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
                 {companies.map((company) => (
                     <div 
                         key={company.name}
-                        className="px-6 py-3 rounded-2xl relative group cursor-pointer"
+                        className="px-4 py-3 rounded-2xl relative group cursor-pointer w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px]"
                     >
                         <div className="absolute inset-0 bg-zinc-900 rounded-2xl transition-opacity duration-500 ease-in-out group-hover:opacity-0"></div>
                         <img 
                             src={company.image} 
                             alt={company.name} 
-                            className="relative h-6 object-contain" 
+                            className="relative h-6 sm:h-8 md:h-10 object-contain w-full" 
                         />
                     </div>
                 ))}

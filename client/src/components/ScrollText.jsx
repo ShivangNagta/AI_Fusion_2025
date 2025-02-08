@@ -28,13 +28,13 @@ export default function ScrollText() {
     }
   }, []);
 
-  const text = "At Workify, effortlessly showcase your talent with pixel-perfect profiles and interactive portfolios. Choose from our catalogue of skillsets and let your skills shine, connecting you with the right opportunities.";
+  const text = "At SolEdge, we are dedicated to making sustainable solar energy accessible and efficient. With cutting-edge technology and eco-friendly solutions, we help you harness the power of the sun, reducing your carbon footprint and paving the way for a cleaner, greener future.";
 
   return (
     <div id="smooth-content" className="relative w-3/5">
       <div
         ref={textRef}
-        className="text-4xl md:text-5xl lg:text-6xl text-white w-full font-bold cursor-default"
+        className="text-2xl md:text-5xl lg:text-6xl text-white w-full font-bold cursor-default"
       >
         {text.split(" ").map((word, index) => (
           <span key={index} className="word inline-block">

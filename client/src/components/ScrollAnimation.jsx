@@ -22,7 +22,7 @@ const RollingText = ({ text }) => {
     <div className="overflow-hidden w-full text-white">
       <div
         ref={marqueeRef}
-        className="inline-block text-[30vh] font-bold whitespace-nowrap absolute bottom-0 hover:text-purple-400 transition-colors duration-300"
+        className="inline-block text-[10vh] md:text-[20vh] lg:text-[30vh] font-bold whitespace-nowrap absolute bottom-0 hover:text-purple-400 transition-colors duration-300"
       >
         <span className="px-4">{text}</span>
       </div>
@@ -55,7 +55,7 @@ const ScrollAnimation = () => {
           ref={boxRef}
           className="bg-black w-full h-full rounded-b-3xl overflow-hidden relative z-20 cursor-default"
         >
-          <RollingText text={"• Workify • Workify • Workify • Workify • Workify • Workify "} />
+          <RollingText text={"• SolEdge • SolEdge • SolEdge • SolEdge • SolEdge • SolEdge "} />
         </div>
       </div>
       <div className='w-full bg-[#EBEBEB] pt-16 pb-64 relative z-0'>
