@@ -7,7 +7,11 @@ const App = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       console.log(result);
+      
       const token = await result.user.getIdToken();
+
+      // Store token in local storage
+      localStorage.setItem("authToken", token);
 
       const response = await fetch("http://localhost:3001/api/protected", {
         method: "POST",
