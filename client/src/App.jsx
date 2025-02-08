@@ -1,6 +1,9 @@
 import React from "react";
 import { auth, googleProvider } from "./firebase";
 import { signInWithPopup } from "firebase/auth";
+import { BrowserRouter as Router} from "react-router-dom";
+import { DarkModeProvider } from "./components/DarkModeContext";
+import AppRoutes from "./routes/Routes";
 
 const App = () => {
   const handleGoogleSignIn = async () => {
@@ -25,14 +28,19 @@ const App = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <button
-        onClick={handleGoogleSignIn}
-        className="p-3 bg-gray-400 rounded-md"
-      >
-        Sign In with Google
-      </button>
-    </div>
+    // <div className="w-screen h-screen flex justify-center items-center">
+    //   <button
+    //     onClick={handleGoogleSignIn}
+    //     className="p-3 bg-gray-400 rounded-md"
+    //   >
+    //     Sign In with Google
+    //   </button>
+    // </div>
+    <DarkModeProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </DarkModeProvider>
   );
 };
 
